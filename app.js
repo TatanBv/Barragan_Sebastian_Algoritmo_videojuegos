@@ -1,8 +1,8 @@
 // =====================
-// 1) Videojuegos
+// 1) Videojuegos a comparar
 // =====================
 
-const videojuegos = [
+const marcas = [
   "Minecraft",
   "Fortnite",
   "GTA V",
@@ -15,53 +15,45 @@ const videojuegos = [
   "Red Dead Redemption 2"
 ];
 
-// =====================
-// 2) Perfiles de jugador
-// =====================
-
+// Segmentos (quién opina)
 const segmentos = {
   "J": "Jugadores jóvenes",
+  "A": "Jugadores adultos",
   "C": "Jugadores casuales",
-  "H": "Jugadores hardcore",
-  "E": "E-sports / competitivos"
+  "H": "Jugadores hardcore"
 };
 
-// =====================
-// 3) Contextos (qué es “mejor”)
-// =====================
-
+// Contextos (qué significa “mejor”)
 const contextos = {
+  "P": "¿Qué videojuego es más POPULAR?",
   "D": "¿Qué videojuego es más DIVERTIDO?",
-  "G": "¿Qué videojuego tiene mejor JUGABILIDAD?",
   "C": "¿Qué videojuego es más COMPETITIVO?",
-  "M": "¿Qué videojuego marcó más la CULTURA gamer?"
+  "I": "¿Qué videojuego tuvo más IMPACTO cultural?"
 };
 
 // =====================
-// 4) Parámetros Elo
+// 2) Parámetros Elo
 // =====================
 
 const RATING_INICIAL = 1000;
 const K = 32;
 
 // =====================
-// 5) Estado
+// 3) Estado
 // =====================
 
 const STORAGE_KEY = "gamemash_state_v1";
 
 function defaultState() {
   const buckets = {};
-
   for (const s of Object.keys(segmentos)) {
     for (const c of Object.keys(contextos)) {
       const key = `${s}__${c}`;
       buckets[key] = {};
-      videojuegos.forEach(v => buckets[key][v] = RATING_INICIAL);
+      marcas.forEach(m => buckets[key][m] = RATING_INICIAL);
     }
   }
-
-  return { buckets };
+  return { buckets, votes: [] };
 }
 
 let state = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultState();
@@ -71,7 +63,7 @@ function saveState() {
 }
 
 // =====================
-// 6) Elo
+// 4) Elo
 // =====================
 
 function expectedScore(ra, rb) {
@@ -90,14 +82,14 @@ function updateElo(bucket, a, b, winner) {
 }
 
 // =====================
-// 7) Utilidades
+// 5) Utilidades
 // =====================
 
 function randomPair() {
-  const a = videojuegos[Math.floor(Math.random() * videojuegos.length)];
+  const a = marcas[Math.floor(Math.random() * marcas.length)];
   let b = a;
   while (b === a) {
-    b = videojuegos[Math.floor(Math.random() * videojuegos.length)];
+    b = marcas[Math.floor(Math.random() * marcas.length)];
   }
   return [a, b];
 }
@@ -108,13 +100,13 @@ function bucketKey(s, c) {
 
 function topN(bucket, n = 10) {
   return Object.entries(bucket)
-    .map(([juego, rating]) => ({ juego, rating }))
+    .map(([marca, rating]) => ({ marca, rating }))
     .sort((a, b) => b.rating - a.rating)
     .slice(0, n);
 }
 
 // =====================
-// 8) UI
+// 6) UI
 // =====================
 
 const segmentSelect = document.getElementById("segmentSelect");
@@ -159,7 +151,7 @@ function renderTop() {
   const rows = topN(state.buckets[key]);
   topBox.innerHTML = rows.map((r, i) => `
     <div class="toprow">
-      <div><b>${i + 1}.</b> ${r.juego}</div>
+      <div><b>${i + 1}.</b> ${r.marca}</div>
       <div>${r.rating.toFixed(1)}</div>
     </div>
   `).join("");
@@ -172,4 +164,3 @@ document.getElementById("btnShowTop").onclick = renderTop;
 
 newDuel();
 renderTop();
-
