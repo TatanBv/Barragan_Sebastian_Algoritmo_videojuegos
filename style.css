@@ -1,19 +1,14 @@
 :root {
   --bg: #0b0b0b;
-  --panel: #141414;
-  --panel2: #1b1b1b;
-  --border: #2a2a2a;
+  --panel: #111111;
+  --panel2: #0f0f0f;
+  --border: #242424;
   --text: #ffffff;
-  --muted: rgba(255,255,255,.7);
-  --accent: #ff7a00;
-  --accent-soft: rgba(255,122,0,.15);
-
+  --muted: rgba(255,255,255,.75);
+  --orange: #ff7a00;
+  --orange2: #ff9a3c;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
-
-/* =====================
-   Base
-===================== */
 
 body {
   margin: 0;
@@ -24,52 +19,40 @@ body {
 .wrap {
   max-width: 980px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 18px;
 }
 
-/* =====================
-   Encabezado
-===================== */
-
 h1 {
-  margin: 6px 0;
-  font-size: 2rem;
+  margin: 8px 0 6px;
 }
 
 .sub {
-  margin: 0;
+  margin: 0 0 6px;
   color: var(--muted);
 }
 
-/* =====================
-   Layout
-===================== */
-
 .grid {
   display: grid;
-  gap: 16px;
+  gap: 14px;
+  grid-template-columns: 1fr;
 }
 
 @media (min-width: 900px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
 .card {
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 16px;
+  border-radius: 14px;
+  padding: 14px;
 }
-
-/* =====================
-   Controles
-===================== */
 
 label {
   display: block;
-  margin-top: 12px;
+  margin-top: 10px;
   margin-bottom: 6px;
   color: var(--muted);
 }
@@ -77,40 +60,40 @@ label {
 select {
   width: 100%;
   padding: 10px;
-  background: var(--panel2);
-  color: var(--text);
   border-radius: 10px;
   border: 1px solid var(--border);
+  background: var(--panel2);
+  color: var(--text);
+  outline: none;
 }
 
 select:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px var(--accent-soft);
+  border-color: var(--orange);
+  box-shadow: 0 0 0 2px rgba(255,122,0,.15);
 }
 
 .row {
   display: flex;
   gap: 10px;
-  margin-top: 14px;
   flex-wrap: wrap;
+  margin-top: 12px;
 }
-
-/* =====================
-   Botones
-===================== */
 
 button {
   cursor: pointer;
-  border: none;
+  border: 0;
   border-radius: 12px;
-  padding: 10px 14px;
+  padding: 10px 12px;
   font-weight: 700;
 }
 
 .primary {
-  background: var(--accent);
-  color: #000;
+  background: var(--orange);
+  color: var(--bg);
+}
+
+.primary:hover {
+  filter: brightness(1.05);
 }
 
 .ghost {
@@ -119,31 +102,28 @@ button {
   border: 1px solid var(--border);
 }
 
-.danger {
-  background: #b32121;
-  color: #fff;
+.ghost:hover {
+  border-color: var(--orange);
 }
 
-/* =====================
-   Pregunta
-===================== */
+.danger {
+  background: #b32121;
+  color: var(--text);
+}
 
 .question {
   background: var(--panel2);
   border: 1px solid var(--border);
-  padding: 12px;
+  padding: 10px;
   border-radius: 12px;
-  font-weight: 600;
+  color: var(--text);
 }
-
-/* =====================
-   Duelo de marcas (A/B)
-===================== */
 
 .duel {
   display: grid;
-  gap: 12px;
-  margin-top: 12px;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 @media (min-width: 900px) {
@@ -153,40 +133,32 @@ button {
 }
 
 .pick {
-  background: linear-gradient(180deg, #1b1b1b, #121212);
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 18px;
+  background: var(--panel2);
+  border: 1px solid var(--border);
   text-align: left;
-  transition: all .15s ease;
+  padding: 14px;
 }
 
 .pick:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+  border-color: var(--orange);
 }
 
 .tag {
   display: inline-block;
-  width: 28px;
-  height: 28px;
-  line-height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 8px;
-  background: var(--accent);
-  color: #000;
-  font-weight: 900;
   text-align: center;
+  line-height: 26px;
   margin-right: 10px;
+  background: var(--orange);
+  color: var(--bg);
+  font-weight: 900;
 }
 
 .title {
-  font-size: 1.1rem;
-  font-weight: 700;
+  vertical-align: middle;
 }
-
-/* =====================
-   Ranking
-===================== */
 
 .topbox {
   background: var(--panel2);
@@ -204,12 +176,13 @@ button {
 }
 
 .toprow:last-child {
-  border-bottom: none;
+  border-bottom: 0;
 }
 
-/* =====================
-   Footer
-===================== */
+.hint {
+  color: var(--muted);
+  margin: 10px 0 0;
+}
 
 .foot {
   color: var(--muted);
