@@ -10,21 +10,17 @@
 <body>
   <header class="wrap">
     <h1>🎮 GameMash</h1>
-    <p class="sub">
-      Comparación A/B para construir rankings de videojuegos por perfil y contexto.
-    </p>
+    <p class="sub">Comparación A/B para medir popularidad de videojuegos.</p>
   </header>
 
   <main class="wrap grid">
-
-    <!-- CONFIGURACIÓN -->
     <section class="card">
       <h2>1) Configura</h2>
 
       <label>Perfil del jugador</label>
       <select id="segmentSelect"></select>
 
-      <label>Criterio de comparación</label>
+      <label>Contexto de comparación</label>
       <select id="contextSelect"></select>
 
       <div class="row">
@@ -33,10 +29,8 @@
       </div>
     </section>
 
-    <!-- VOTACIÓN -->
     <section class="card">
-      <h2>2) Elige</h2>
-
+      <h2>2) Elige el videojuego</h2>
       <p id="question" class="question">—</p>
 
       <div class="duel">
@@ -51,34 +45,23 @@
         </button>
       </div>
 
-      <p class="hint">
-        Cada voto ajusta el ranking según el criterio elegido.
-      </p>
-
       <div class="row">
+        <button id="btnExport" class="ghost">⬇️ Exportar votos</button>
         <button id="btnShowTop" class="primary">🏆 Ver Top 10</button>
       </div>
     </section>
 
-    <!-- RANKING -->
     <section class="card">
-      <h2>3) Ranking</h2>
+      <h2>3) Ranking de videojuegos</h2>
       <div id="topBox" class="topbox"></div>
-      <p class="hint">
-        Ranking filtrado por perfil y criterio.
-      </p>
     </section>
-
   </main>
 
   <footer class="wrap foot">
-    <small>
-      Algoritmo A/B + Elo — preferencias humanas sobre videojuegos.
-    </small>
+    <small>Algoritmo A/B + Elo — popularidad percibida de videojuegos.</small>
   </footer>
 
   <script src="app.js"></script>
 </body>
 </html>
-
 
