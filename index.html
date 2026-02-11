@@ -3,26 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>VideoGameMash — Ranking de videojuegos históricos</title>
+  <title>GameMash — Ranking de videojuegos</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <header class="wrap">
-    <h1>🎮 VideoGameMash</h1>
+    <h1>🎮 GameMash</h1>
     <p class="sub">
-      Comparación A/B para construir un ranking de videojuegos
-      según decisiones humanas y contexto.
+      Comparación A/B para construir rankings de videojuegos por perfil y contexto.
     </p>
   </header>
 
   <main class="wrap grid">
 
-    <!-- 1) CONFIGURACIÓN -->
+    <!-- CONFIGURACIÓN -->
     <section class="card">
       <h2>1) Configura</h2>
 
-      <label>Perfil de quien responde</label>
+      <label>Perfil del jugador</label>
       <select id="segmentSelect"></select>
 
       <label>Criterio de comparación</label>
@@ -30,17 +29,15 @@
 
       <div class="row">
         <button id="btnNewPair" class="ghost">🔁 Nueva comparación</button>
-        <button id="btnReset" class="danger">🧹 Reiniciar ranking</button>
+        <button id="btnReset" class="danger">🧹 Reiniciar</button>
       </div>
     </section>
 
-    <!-- 2) ELECCIÓN -->
+    <!-- VOTACIÓN -->
     <section class="card">
-      <h2>2) Elige el mejor videojuego</h2>
+      <h2>2) Elige</h2>
 
-      <p id="question" class="question">
-        ¿Cuál de estos videojuegos consideras superior según el criterio elegido?
-      </p>
+      <p id="question" class="question">—</p>
 
       <div class="duel">
         <button id="btnA" class="pick">
@@ -54,28 +51,34 @@
         </button>
       </div>
 
+      <p class="hint">
+        Cada voto ajusta el ranking según el criterio elegido.
+      </p>
+
       <div class="row">
-        <button id="btnExport" class="ghost">⬇️ Exportar votos</button>
-        <button id="btnShowTop" class="primary">🏆 Ver Top videojuegos</button>
+        <button id="btnShowTop" class="primary">🏆 Ver Top 10</button>
       </div>
     </section>
 
-    <!-- 3) RANKING -->
+    <!-- RANKING -->
     <section class="card">
-      <h2>3) Ranking de videojuegos</h2>
+      <h2>3) Ranking</h2>
       <div id="topBox" class="topbox"></div>
+      <p class="hint">
+        Ranking filtrado por perfil y criterio.
+      </p>
     </section>
 
   </main>
 
   <footer class="wrap foot">
     <small>
-      Algoritmo de comparación A/B y ranking.
-      El resultado refleja criterios humanos, no verdades objetivas.
+      Algoritmo A/B + Elo — preferencias humanas sobre videojuegos.
     </small>
   </footer>
 
   <script src="app.js"></script>
 </body>
 </html>
+
 
