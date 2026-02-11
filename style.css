@@ -1,0 +1,37 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: #eee;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #00ffcc;
+}
+
+#comparison {
+  margin: 30px 0;
+}
+
+button {
+  background-color: #222;
+  color: #fff;
+  border: 2px solid #00ffcc;
+  padding: 15px 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 260px;
+}
+
+button:hover {
+  background-color: #00ffcc;
+  color: #000;
+}
+
+ol {
+  max-width: 400px;
+  margin: auto;
+  text-align: left;
+}
