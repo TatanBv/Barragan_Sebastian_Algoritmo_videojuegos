@@ -1,12 +1,11 @@
 :root {
   --bg: #0b0b0b;
-  --panel: #141414;
-  --panel2: #1b1b1b;
-  --border: #2a2a2a;
+  --panel: #111111;
+  --panel2: #0f0f0f;
+  --border: #242424;
   --text: #ffffff;
-  --muted: rgba(255,255,255,.7);
-  --accent: #ff7a00;
-
+  --muted: rgba(255,255,255,.75);
+  --orange: #ff7a00;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
 
@@ -20,10 +19,6 @@ body {
   max-width: 980px;
   margin: 0 auto;
   padding: 18px;
-}
-
-.sub {
-  color: var(--muted);
 }
 
 .grid {
@@ -54,28 +49,29 @@ label {
 select {
   width: 100%;
   padding: 10px;
-  background: var(--panel2);
-  color: var(--text);
   border-radius: 10px;
   border: 1px solid var(--border);
+  background: var(--panel2);
+  color: var(--text);
 }
 
 .row {
   display: flex;
   gap: 10px;
   margin-top: 12px;
+  flex-wrap: wrap;
 }
 
 button {
   cursor: pointer;
-  border: none;
+  border: 0;
   border-radius: 12px;
   padding: 10px 12px;
   font-weight: 700;
 }
 
 .primary {
-  background: var(--accent);
+  background: var(--orange);
   color: #000;
 }
 
@@ -90,17 +86,14 @@ button {
   color: #fff;
 }
 
-/* 🔴 TEXTO DE LA PREGUNTA */
 .question {
   background: var(--panel2);
   border: 1px solid var(--border);
-  padding: 12px;
+  padding: 10px;
   border-radius: 12px;
   color: #ffffff;
-  font-weight: 600;
 }
 
-/* 🔴 DUELO A/B */
 .duel {
   display: grid;
   gap: 10px;
@@ -113,35 +106,34 @@ button {
   }
 }
 
+/* 🔥 AQUÍ ESTÁ EL CAMBIO IMPORTANTE 🔥 */
 .pick {
   background: var(--panel2);
-  border: 2px solid var(--border);
-  padding: 16px;
+  border: 1px solid var(--border);
   text-align: left;
-  color: #ffffff;
+  padding: 14px;
+  color: #ffffff;          /* TEXTO BLANCO */
+}
+
+.pick .title {
+  color: #ffffff;          /* TEXTO BLANCO */
 }
 
 .pick:hover {
-  border-color: var(--accent);
+  border-color: var(--orange);
 }
 
 .tag {
   display: inline-block;
   width: 26px;
   height: 26px;
-  line-height: 26px;
-  text-align: center;
   border-radius: 8px;
+  text-align: center;
+  line-height: 26px;
   margin-right: 10px;
-  background: var(--accent);
+  background: var(--orange);
   color: #000;
   font-weight: 900;
-}
-
-.title {
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 700;
 }
 
 .topbox {
@@ -149,7 +141,6 @@ button {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 10px;
-  min-height: 120px;
 }
 
 .toprow {
@@ -160,7 +151,7 @@ button {
 }
 
 .toprow:last-child {
-  border-bottom: none;
+  border-bottom: 0;
 }
 
 .foot {
